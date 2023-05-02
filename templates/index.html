@@ -1,24 +1,134 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <style>
+        /* Set default font and background color */
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fGhvdXNlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Center the form on the page */
+        form {
+            margin: 0 auto;
+            width: 50%;
+            max-width: 500px;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Style the heading */
+        h1 {
+            text-align: center;
+            margin-top: 50px;
+            color: #fff;
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Style the form labels and inputs */
+        label {
+            display: block;
+            margin-bottom: 5px;
+            margin-left: 10px;
+            color: #333;
+        }
+
+        input[type="text"] {
+            width: 95%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        /* */
+        .sec3 {
+            display: flex;
+        }
+
+        .box {
+            margin: 5px 15px;
+        }
+
+        /* Style the submit button */
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #3e8e41;
+        }
+
+        /*Style the predicted output*/
+        p {
+            text-align: center;
+            margin: 1px auto;
+            padding: 4px 10px;
+            border-radius: 10px;
+            width: fit-content;
+            font-size: 40px;
+            margin-top: 50px;
+            background-color: rgb(84, 198, 84);
+            color: #fff;
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+    <title>House Price Prediction</title>
 </head>
+
 <body>
     <h1>Delhi House Price Prediction</h1>
     <form action="{{ url_for('predict') }}" method="post">
-        <label for="bedrooms">Number of bedrooms:</label>
-        <input type="text" name="bedrooms" id="bedrooms">
-        <br><br>
         <label for="area">Area in square feet:</label>
         <input type="text" name="area" id="area">
-        <br><br>
-        <label for="location">Location:</label>
-        <input type="text" name="location" id="location">
-        <br><br>
+
+        <label for="bedrooms">Number of bedrooms:</label>
+        <input type="text" name="Bedrooms" id="bedrooms">
+
+        <div class="sec3">
+            <div class="box">
+                <label for="bathrooms">Number of bathrooms:</label>
+                <input type="text" name="Bathrooms" id="bathrooms">
+            </div>
+            <div class="box">
+                <label for="balcony">Number of belcony:</label>
+                <input type="text" name="balcony" id="balcony">
+            </div>
+        </div>
+
+        <div class="sec3">
+            <div class="box">
+                <label for="parking">parking:</label>
+                <input type="text" name="parking" id="parking">
+            </div>
+            <div class="box">
+                <label for="lift">lift:</label>
+                <input type="text" name="lift" id="lift">
+            </div>
+        </div>
+
         <input type="submit" value="Predict">
     </form>
+    {% if prediction_text %}
+    <p id="para1">{{ prediction_text }}</p>
+    {% endif %}
 </body>
+
 </html>
