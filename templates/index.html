@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Delhi House Price Prediction</h1>
+    <form action="{{ url_for('predict') }}" method="post">
+        <label for="bedrooms">Number of bedrooms:</label>
+        <input type="text" name="bedrooms" id="bedrooms">
+        <br><br>
+        <label for="area">Area in square feet:</label>
+        <input type="text" name="area" id="area">
+        <br><br>
+        <label for="location">Location:</label>
+        <input type="text" name="location" id="location">
+        <br><br>
+        <input type="submit" value="Predict">
+    </form>
+</body>
+</html>
